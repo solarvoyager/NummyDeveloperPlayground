@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nummy.HttpLogger", "Nummy.HttpLogger\Nummy.HttpLogger.csproj", "{C8971790-E0A4-4FB5-99C8-8BEC4E7CA120}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8971790-E0A4-4FB5-99C8-8BEC4E7CA120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8971790-E0A4-4FB5-99C8-8BEC4E7CA120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8971790-E0A4-4FB5-99C8-8BEC4E7CA120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8971790-E0A4-4FB5-99C8-8BEC4E7CA120}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
