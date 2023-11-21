@@ -4,9 +4,12 @@
     <option name="keyValueStorage">
       <map>
         <entry key="Common:buildConfiguration" value="Debug" />
+        <entry key="Common:c7765347-4c54-4738-949d-9918ec608c14:dbContext" value="Nummy.CodeLogger.Data.DataContext.NummyCodeLoggerDataContext" />
         <entry key="Common:c8971790-e0a4-4fb5-99c8-8bec4e7ca120:dbContext" value="Nummy.HttpLogger.Data.DataContext.NummyDataContext" />
+        <entry key="Common:d00b4f0a-b055-41a5-86f8-fc55100cd051:dbContext" value="Nummy.HttpLogger.Data.DataContext.NummyHttpLoggerDataContext" />
         <entry key="Common:noBuild" value="false" />
         <entry key="Common:outputFolder" value="Migrations" />
+        <entry key="Common:useDefaultConnection" value="true" />
       </map>
     </option>
   </component>
