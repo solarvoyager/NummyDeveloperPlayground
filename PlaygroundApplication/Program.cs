@@ -1,54 +1,53 @@
+using System.Dynamic;
+using System.Net;
 using Nummy.CodeLogger.Extensions;
-using Nummy.CodeLogger.Models;
-using Nummy.HttpLogger.Extensions;
-using Nummy.HttpLogger.Models;
+using Nummy.ExceptionHandler.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-const string db =
-    "Host=localhost;Port=5432;Database=nummy_db;Username=postgres;Password=postgres;IncludeErrorDetail=true;";
+const string dsnUrl =
+    "https://www.test.com/";
 
+/*
 builder.Services.AddNummyHttpLogger(options =>
 {
     // Configure options here
-    // Example: 
+    // Example:
     options.EnableRequestLogging = true;
     options.EnableResponseLogging = true;
-    options.ExcludeContainingPaths = new[] { "swagger" };
-    options.DatabaseType = NummyHttpLoggerDatabaseType.PostgreSql;
-    options.DatabaseConnectionString = db;
+    options.ExcludeContainingPaths = ["swagger"];
+    options.DsnUrl = dsnUrl;
 });
+*/
 
-builder.Services.AddNummyCodeLogger(options =>
+builder.Services.AddNummyCodeLogger(options => options.DsnUrl = dsnUrl);
+
+dynamic errorResponse = new ExpandoObject();
+
+errorResponse.success = false;
+errorResponse.message = "error";
+
+builder.Services.AddNummyExceptionHandler(options =>
 {
-    // Configure options here
-    // Example: 
-    options.DatabaseType = NummyCodeLoggerDatabaseType.PostgreSql;
-    options.DatabaseConnectionString = db;
+    options.HandleException = true; // if false, the app throws exceptions as a normal
+    options.ResponseStatusCode = HttpStatusCode.BadRequest;
+    options.Response = errorResponse;
+    options.DsnUrl = dsnUrl;
 });
 
 var app = builder.Build();
 
-app.UseNummyHttpLogger();
+app.UseNummyExceptionHandler();
+//app.UseNummyHttpLogger();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
