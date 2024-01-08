@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 const string dsnUrl =
-    "https://www.test.com/";
+    "http://localhost:8082/";
 
 /*
 builder.Services.AddNummyHttpLogger(options =>
