@@ -29,7 +29,7 @@ builder.Services.AddNummyCodeLogger(options => options.DsnUrl = dsnUrl);
 dynamic errorResponse = new ExpandoObject();
 
 errorResponse.success = false;
-errorResponse.message = "error";
+errorResponse.message = "error catched & logged by nummy exception handler";
 
 builder.Services.AddNummyExceptionHandler(options =>
 {
