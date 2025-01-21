@@ -2,6 +2,7 @@ using System.Dynamic;
 using System.Net;
 using Nummy.CodeLogger.Extensions;
 using Nummy.ExceptionHandler.Extensions;
+using Nummy.HttpLogger.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,6 @@ builder.Services.AddSwaggerGen();
 const string dsnUrl =
     "http://localhost:8082/";
 
-/*
 builder.Services.AddNummyHttpLogger(options =>
 {
     // Configure options here
@@ -22,7 +22,6 @@ builder.Services.AddNummyHttpLogger(options =>
     options.ExcludeContainingPaths = ["swagger"];
     options.DsnUrl = dsnUrl;
 });
-*/
 
 builder.Services.AddNummyCodeLogger(options => options.DsnUrl = dsnUrl);
 
@@ -42,7 +41,7 @@ builder.Services.AddNummyExceptionHandler(options =>
 var app = builder.Build();
 
 app.UseNummyExceptionHandler();
-//app.UseNummyHttpLogger();
+app.UseNummyHttpLogger();
 
 app.UseSwagger();
 app.UseSwaggerUI();
