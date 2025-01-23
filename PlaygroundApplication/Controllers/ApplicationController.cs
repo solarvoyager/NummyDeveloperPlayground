@@ -17,11 +17,11 @@ public class ApplicationController : ControllerBase
     [HttpGet("Test")]
     public async Task<IActionResult> Get()
     {
-        await _loggerService.LogInfoAsync("This is info title", "Description of me");
-        //await _loggerService.LogAsync(NummyCodeLogLevel.Fatal, new ArgumentNullException(nameof(SystemColors)));
-        //await _loggerService.LogErrorAsync(new ArgumentNullException(nameof(SystemColors)));
+        //await _loggerService.LogInfoAsync("This is info title", "Description of me");
+        //await _loggerService.LogAsync(NummyCodeLogLevel.Fatal, new ArgumentNullException("asda"));
+        //await _loggerService.LogErrorAsync(new ArgumentNullException("asda"));
 
-        throw new AggregateException();
+        throw new ArgumentOutOfRangeException("rreses");
         //return Ok("Test response");
     }
 }

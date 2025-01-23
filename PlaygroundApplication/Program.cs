@@ -13,15 +13,6 @@ builder.Services.AddSwaggerGen();
 const string dsnUrl =
     "http://localhost:8082/";
 
-builder.Services.AddNummyHttpLogger(options =>
-{
-    // Configure options here
-    // Example:
-    options.EnableRequestLogging = true;
-    options.EnableResponseLogging = true;
-    options.ExcludeContainingPaths = ["swagger"];
-    options.DsnUrl = dsnUrl;
-});
 
 builder.Services.AddNummyCodeLogger(options => options.DsnUrl = dsnUrl);
 
@@ -33,15 +24,25 @@ errorResponse.message = "error catched & logged by nummy exception handler";
 builder.Services.AddNummyExceptionHandler(options =>
 {
     options.HandleException = true; // if false, the app throws exceptions as a normal
-    options.ResponseStatusCode = HttpStatusCode.BadRequest;
+    options.ResponseStatusCode = HttpStatusCode.Conflict;
     options.Response = errorResponse;
+    options.DsnUrl = dsnUrl;
+});
+
+builder.Services.AddNummyHttpLogger(options =>
+{
+    // Configure options here
+    // Example:
+    options.EnableRequestLogging = true;
+    options.EnableResponseLogging = true;
+    options.ExcludeContainingPaths = ["swagger"];
     options.DsnUrl = dsnUrl;
 });
 
 var app = builder.Build();
 
-app.UseNummyExceptionHandler();
 app.UseNummyHttpLogger();
+app.UseNummyExceptionHandler();
 
 app.UseSwagger();
 app.UseSwaggerUI();
