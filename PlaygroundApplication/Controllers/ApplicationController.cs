@@ -16,6 +16,8 @@ public class ApplicationController(INummyCodeLoggerService loggerService) : Cont
         await loggerService.LogErrorAsync(new ArgumentNullException("test error"));
 
         //throw new ArgumentOutOfRangeException("rreses");
-        return Ok("Test response");
+        //return Ok("Test response");
+
+        return Unauthorized("No acess");
     }
 }
