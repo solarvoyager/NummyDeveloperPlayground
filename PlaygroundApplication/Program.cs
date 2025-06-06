@@ -10,8 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-const string dsnUrl =
+const string nummyServiceUrl =
     "http://localhost:8082/";
+
+const string applicationId = "playground-application";
 
 
 builder.Services.AddNummyCodeLogger(options => options.DsnUrl = dsnUrl);
