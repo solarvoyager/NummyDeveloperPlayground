@@ -6,23 +6,16 @@ namespace PlaygroundApplication.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ApplicationController : ControllerBase
+public class ApplicationController(INummyCodeLoggerService loggerService) : ControllerBase
 {
-    private readonly INummyCodeLoggerService _loggerService;
-
-    public ApplicationController(INummyCodeLoggerService loggerService)
-    {
-        _loggerService = loggerService;
-    }
-
     [HttpGet("Test")]
     public async Task<IActionResult> Get()
     {
-        await _loggerService.LogInfoAsync("This is info title", "Description of me");
-        await _loggerService.LogAsync(NummyCodeLogLevel.Fatal, new ArgumentNullException("asda"));
-        //await _loggerService.LogErrorAsync(new ArgumentNullException("asda"));
+        await loggerService.LogInfoAsync("This is info title", "Description of me");
+        await loggerService.LogAsync(NummyCodeLogLevel.Fatal, new ArgumentNullException("fatal somethin happened"));
+        await loggerService.LogErrorAsync(new ArgumentNullException("test error"));
 
-        throw new ArgumentOutOfRangeException("rreses");
-        //return Ok("Test response");
+        //throw new ArgumentOutOfRangeException("rreses");
+        return Ok("Test response");
     }
 }

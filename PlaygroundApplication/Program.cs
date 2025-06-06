@@ -10,35 +10,36 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-const string nummyServiceUrl =
-    "http://localhost:8082/";
+const string nummyServiceUrl = "http://localhost:8082/";
 
-const string applicationId = "playground-application";
+const string applicationId = "5dd3ec25-5fb9-4f92-bf70-bff42c9da148";
 
-
-builder.Services.AddNummyCodeLogger(options => options.DsnUrl = dsnUrl);
+builder.Services.AddNummyCodeLogger(options => 
+{
+    options.NummyServiceUrl = nummyServiceUrl;
+    options.ApplicationId = applicationId;
+});
 
 dynamic errorResponse = new ExpandoObject();
-
 errorResponse.success = false;
 errorResponse.message = "error catched & logged by nummy exception handler";
 
 builder.Services.AddNummyExceptionHandler(options =>
 {
-    options.HandleException = true; // if false, the app throws exceptions as a normal
+    options.HandleException = true;
     options.ResponseStatusCode = HttpStatusCode.Conflict;
     options.Response = errorResponse;
-    options.DsnUrl = dsnUrl;
+    options.ApplicationId = applicationId;
+    options.NummyServiceUrl = nummyServiceUrl;
 });
 
 builder.Services.AddNummyHttpLogger(options =>
 {
-    // Configure options here
-    // Example:
     options.EnableRequestLogging = true;
     options.EnableResponseLogging = true;
     options.ExcludeContainingPaths = ["swagger"];
-    options.DsnUrl = dsnUrl;
+    options.ApplicationId = applicationId;
+    options.NummyServiceUrl = nummyServiceUrl;
 });
 
 var app = builder.Build();
