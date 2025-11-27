@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 const string nummyServiceUrl = "http://localhost:8082/";
 
-const string applicationId = "5dd3ec25-5fb9-4f92-bf70-bff42c9da148";
+const string applicationId = "aacd15dd-c36e-423b-8dcc-d7c7236174a9";
 
 builder.Services.AddNummyCodeLogger(options => 
 {
@@ -38,6 +38,7 @@ builder.Services.AddNummyHttpLogger(options =>
     options.EnableRequestLogging = true;
     options.EnableResponseLogging = true;
     options.ExcludeContainingPaths = ["swagger"];
+    options.MaskHeaders = ["Content-Type"];
     options.ApplicationId = applicationId;
     options.NummyServiceUrl = nummyServiceUrl;
 });
