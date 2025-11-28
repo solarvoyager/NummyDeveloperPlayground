@@ -15,9 +15,12 @@ public class ApplicationController(INummyCodeLoggerService loggerService) : Cont
         await loggerService.LogAsync(NummyCodeLogLevel.Fatal, new ArgumentNullException("fatal somethin happened"));
         await loggerService.LogErrorAsync(new ArgumentNullException("test error"));
 
-        //throw new ArgumentOutOfRangeException("rreses");
-        //return Ok("Test response");
-
         return Unauthorized("No acess");
+    }
+    
+    [HttpDelete("Test2")]
+    public async Task<IActionResult> Get2()
+    {
+        throw new ArgumentOutOfRangeException("rreses");
     }
 }

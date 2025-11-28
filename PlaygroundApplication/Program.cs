@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 const string nummyServiceUrl = "http://localhost:8082/";
 
-const string applicationId = "aacd15dd-c36e-423b-8dcc-d7c7236174a9";
+const string applicationId = "909e2c2f-48d3-47d2-9971-c96334c2f12c";
 
 builder.Services.AddNummyCodeLogger(options => 
 {
