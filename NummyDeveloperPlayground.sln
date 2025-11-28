@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nummy.ExceptionHandler", ".
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaygroundApplication", "PlaygroundApplication\PlaygroundApplication.csproj", "{7A971E76-7799-4116-92F6-3EFCC8F0BE73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nummy.HealthChecker", "..\Nummy.HealthChecker\Nummy.HealthChecker.csproj", "{1B1318CC-9177-4D2B-AD3B-FC998A8DDA94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7A971E76-7799-4116-92F6-3EFCC8F0BE73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A971E76-7799-4116-92F6-3EFCC8F0BE73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A971E76-7799-4116-92F6-3EFCC8F0BE73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B1318CC-9177-4D2B-AD3B-FC998A8DDA94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B1318CC-9177-4D2B-AD3B-FC998A8DDA94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B1318CC-9177-4D2B-AD3B-FC998A8DDA94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B1318CC-9177-4D2B-AD3B-FC998A8DDA94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

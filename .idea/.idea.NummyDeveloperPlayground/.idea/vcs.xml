@@ -4,6 +4,7 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../Nummy.CodeLogger" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../Nummy.ExceptionHandler" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../Nummy.HealthChecker" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../Nummy.HttpLogger" vcs="Git" />
   </component>
 </project>
