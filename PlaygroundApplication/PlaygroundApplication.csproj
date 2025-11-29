@@ -18,6 +18,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\Nummy.CodeLogger\Nummy.CodeLogger.csproj"/>
         <ProjectReference Include="..\..\Nummy.ExceptionHandler\Nummy.ExceptionHandler.csproj"/>
+        <ProjectReference Include="..\..\Nummy.HealthChecker\Nummy.HealthChecker.csproj" />
         <ProjectReference Include="..\..\Nummy.HttpLogger\Nummy.HttpLogger.csproj"/>
     </ItemGroup>
 
