@@ -13,8 +13,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // From Nummy
-const string nummyServiceUrl = "http://localhost:8082/";
-const string applicationId = "909e2c2f-48d3-47d2-9971-c96334c2f12c";
+var nummyServiceUrl = builder.Configuration["Nummy:ServiceUrl"]
+    ?? throw new InvalidOperationException("Nummy:ServiceUrl is not configured in appsettings.json.");
+var applicationId = builder.Configuration["Nummy:ApplicationId"]
+    ?? throw new InvalidOperationException("Nummy:ApplicationId is not configured in appsettings.json.");
 
 // Nummy.CodeLogger config
 builder.Services.AddNummyCodeLogger(options => 
@@ -26,7 +28,7 @@ builder.Services.AddNummyCodeLogger(options =>
 // Nummy.ExceptionHandler config
 dynamic errorResponse = new ExpandoObject();
 errorResponse.success = false;
-errorResponse.message = "error catched & logged by nummy exception handler";
+errorResponse.message = "error caught & logged by nummy exception handler";
 
 builder.Services.AddNummyExceptionHandler(options =>
 {
@@ -43,7 +45,7 @@ builder.Services.AddNummyHttpLogger(options =>
     options.EnableRequestLogging = true;
     options.EnableResponseLogging = true;
     options.ExcludeContainingPaths = ["swagger"];
-    options.MaskHeaders = ["Content-Type"];
+    options.MaskHeaders = ["Authorization"];
     options.ApplicationId = applicationId;
     options.NummyServiceUrl = nummyServiceUrl;
 });
@@ -70,6 +72,8 @@ builder.Services.AddNummyHealthChecker(options =>
 
 var app = builder.Build();
 
+// Order is intentional: HttpLogger wraps ExceptionHandler so that error
+// responses produced by the exception middleware are also captured and logged.
 app.UseNummyHttpLogger();
 app.UseNummyExceptionHandler();
 app.MapNummyHealthChecker();

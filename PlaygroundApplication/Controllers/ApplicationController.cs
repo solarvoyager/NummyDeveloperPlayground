@@ -15,7 +15,7 @@ public class ApplicationController(INummyCodeLoggerService loggerService) : Cont
         await loggerService.LogAsync(NummyCodeLogLevel.Fatal, new ArgumentNullException("fatal somethin happened"));
         await loggerService.LogErrorAsync(new ArgumentNullException("test error"));
 
-        return Unauthorized("No acess");
+        return Unauthorized("No access");
     }
     
     [HttpDelete("Test2")]

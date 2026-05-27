@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dotnet build:*)"
+      "Bash(dotnet build:*)",
+      "Bash(find \"D:\\\\RiderProjects\\\\SolarVoyager\\\\Nummy.CodeLogger\" -type f -name \"*.cs\" | head -20)",
+      "Bash(find \"D:\\\\RiderProjects\\\\SolarVoyager\\\\Nummy.ExceptionHandler\" -type f -name \"*.cs\" | grep -v obj | grep -v bin)",
+      "Bash(find \"D:\\\\RiderProjects\\\\SolarVoyager\\\\Nummy.HealthChecker\" -type f -name \"*.cs\" | grep -v obj | grep -v bin)",
+      "Bash(find \"D:\\\\RiderProjects\\\\SolarVoyager\\\\Nummy.HttpLogger\" -type f -name \"*.cs\" | grep -v obj | grep -v bin)",
+      "Bash(ls -la \"D:\\\\RiderProjects\\\\SolarVoyager\" | head -30)"
     ]
   }
 }
